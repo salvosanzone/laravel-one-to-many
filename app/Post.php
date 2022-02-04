@@ -9,6 +9,16 @@ use Illuminate\Support\Str;
 
 class Post extends Model
 {
+
+
+    public function category(){
+
+        // alll'oggetto post appartine una sola category
+        return $this->belongsTo('App\Category');
+    }
+
+
+
     public static function generateSlug($title){
         // genero lo slug
         $slug = Str::slug($title);

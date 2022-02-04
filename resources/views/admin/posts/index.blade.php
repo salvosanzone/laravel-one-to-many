@@ -12,7 +12,8 @@
       <thead>
         <tr>
           <th scope="col">ID</th>
-          <th scope="col" colspan="4">Title</th>
+          <th scope="col">Title</th>
+          <th scope="col"colspan="4">Category</th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +22,14 @@
           <tr>
             <th scope="row">{{ $post->id }}</th>
             <td>{{ $post->title }}</td>
+            
+            {{-- se esiste lo stampo altrimenti metto un trattino --}}
+            @if ($post->category->name)
+              <td>{{ $post->category->name }}</td>
+            @else
+              -
+            @endif
+            
             <td>
               <a href="{{ route('admin.posts.show', $post) }}"class="btn btn-success" scope="col">Show</a>
             </td>
@@ -41,6 +50,5 @@
       </tbody>
     </table>
     {{ $posts->links() }}
-    <a class="btn btn-dark mt-5" href="{{ route('admin.index') }}"><< Back</a>
   </div>
 @endsection
